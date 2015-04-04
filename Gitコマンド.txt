@@ -1,0 +1,53 @@
+git reflog  HEADブランチ一覧
+git log
+git push origin master 上传至github(origin master为复制的母版本)
+
+git config --global user.email "m_lunxu@fancs.com" git邮箱初期设定
+git config --global user.name "myou.rinsyo"        git用户名初期设定
+
+git config --global alias.ci commmit 设定快捷方式
+
+git config --global color.ui auto 设定git输出时带颜色
+git log --graph --decorate --color | less -R 查看git上传记录（颜色标注）
+git log -p --graph --decorate --color | less -R 查看全部git修改历史（颜色标注）
+
+ステージングエリア
+git reset HEAD filepath ステージングエリアからローカルエリアに戻す
+
+git reset --soft  HEAD^ ローカルmasterを直前のコミットに戻し、修正したファイルはステージングエリアにある
+git reset --mixed HEAD^ ローカルmasterを直前のコミットに戻し、修正したファイルはローカルエリアにある
+git reset --hard  HEAD^ ローカルmasterを直前のコミットに戻し、修正したファイルの内容を廃棄する
+git reset --soft  commitId ローカルmasterを指定したコミットIDに戻し、修正したファイルはステージングエリアにある
+git reset --mixed commitId ローカルmasterを指定したコミットIDに戻し、修正したファイルはローカルエリアにある
+git reset --hard  commitId ローカルmasterを指定したコミットIDに戻し、修正したファイルの内容を廃棄する
+※reset後、pushすることによって、リモートmasterが指しているコミットをローカルmasterと統一できる
+　git push --force(古いcommitIdに戻す場合必要オプション)
+
+git log --graph --decorate --color --all b58607d 064ba84 e586077 | less -R ツリーから外したコミットの状態を見る
+
+git log --graph --decorate --color --all | less -R　途中から分かれたツリーの状態も見れる
+
+git commit --amend 一個前のcommitのメッセージを修正
+
+git push --force origin master
+
+git rebase --interactive HEAD^^^^  HEADから3個前までのcommitを引き出す。
+pick→rewordにすれば、メッセージ編集できる。
+pick→editにすれば、プログラム中身編集できる。。
+pick→squashにすれば、二つのコミットを一個に合成できる
+
+
+      1 pick b4f8490 【日時指定可能範囲を一日に絞るように変更した】
+      2 pick 4bd9383 ワ3ーディング修正
+      3 pick 99846f9 【List表示のソート列を変更】
+      4 pick 9a3545e 【List表示データ変更】
+      5
+      6 # Rebase a03b390..9a3545e onto a03b390
+      7 #
+      8 # Commands:
+      9 #  p, pick = use commit
+     10 #  r, reword = use commit, but edit the commit message
+     11 #  e, edit = use commit, but stop for amending
+     12 #  s, squash = use commit, but meld into previous commit
+     13 #  f, fixup = like "squash", but discard this commit's log message
+     14 #  x, exec = run command (the rest of the line) using shell

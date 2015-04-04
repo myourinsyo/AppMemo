@@ -1,0 +1,10 @@
+・Linux firewallをストップする
+　sudo systemctl stop firewalld
+
+・find .  -type f -name '*.scala' -print | grep -i selfback | xargs grep -i selfback | cut -c-90
+  １.　.scalaファイルを検索
+　２． .scalaファイル名の中からselfbackの文字列が含まれているファイルを検索
+　３． さらに、検索したファイルの中身からselfback文字列が含まれているファイルを検索
+　４． ファイル名の長さが長すぎないように90文字まで表示する
+
+
