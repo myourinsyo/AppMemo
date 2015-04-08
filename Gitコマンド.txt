@@ -31,6 +31,7 @@ git commit --amend 一個前のcommitのメッセージを修正
 
 git push --force origin master
 
+git config --global core.quotepath false 文字化け修正
 git rebase --interactive HEAD^^^^  HEADから3個前までのcommitを引き出す。
 pick→rewordにすれば、メッセージ編集できる。
 pick→editにすれば、プログラム中身編集できる。。
