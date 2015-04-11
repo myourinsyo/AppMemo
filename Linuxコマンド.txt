@@ -7,4 +7,32 @@
 　３． さらに、検索したファイルの中身からselfback文字列が含まれているファイルを検索
 　４． ファイル名の長さが長すぎないように90文字まで表示する
 
+・file filename
 
+・メタキャラクタ
+  *    0文字以上の任意の文字列
+  ?    任意の１文字
+  []   []内の任意の１文字
+  [^]  [^]内の文字を除く任意の１文字
+  \    直後の文字をメタキャラクタとみなさない
+
+  ls *.txt   a.txt b.txt a1.txt b1.txt
+  ls ?.txt   a.txt b.txt
+  ls ??.txt  a1.txt b1.txt
+  ls [ab][135]* ファイル名はaもしくはbで始まり、2文字目が135いずれかであるファイル
+  ls [^b]* ファイル名がbという文字で始まらないファイルだけ
+
+・アーカイブ
+　　　作成　tar cvf myou.tar myou
+  　　　myou.tar 目的ファイル
+        myou 圧縮するディレクトリ
+      展開  tar zvf myou.tar
+  圧縮  tar czvf myou.tar.gz myou (gzipに圧縮)
+  解凍  tar xzvf myou.tar.gz
+
+  c  アーカイブを作成する
+  x  アーカイブを展開する
+  z  gzipによる圧縮/解凍を利用する  .tar.gz
+  j  bzip2による圧縮/解凍を利用する .tar.bz2
+  f  アーカイブファイル目を指定する
+  v  処理内容を表示
