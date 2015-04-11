@@ -1,0 +1,35 @@
+・Java
+  インストール（java,javac同時インストールされる）
+　yum -y install java-1.7.0-openjdk-devel（yum install javac？）
+
+・Apache
+  => インストール
+  yum -y install httpd
+  => 設定ファイル
+  /etc/httpd/conf/httpd.conf
+    ServerRoot       |  設定などのトップディレクトリー
+    Listen           |  サーバーが待ち受けるポート番号
+    IncludeOptional  |  外部の設定ファイル
+    User             |  Apacheの実行ユーザー
+    Group            |  Apacheの実行グループ
+    ServerAdmin      |  サーバーの管理者
+    ServerName       |  サーバー名
+    DocumentRoot     |  ドキュメントルート
+    DirectoryIndex   |  インデックスファイルの指定
+
+  => 設定ファイル構文のチェック
+  httpd -t
+  => 起動
+  systemctl start httpd.service
+  systemctl stop httpd.service
+  systemctl restart httpd.service
+
+  => 自動起動設定
+  systemctl enable httpd.service
+  systemctl disable httpd.service
+
+  => 開いてるポートを確認する
+  netstat -ant
+
+  => service自動起動設定確認
+  chkconfig --list
